@@ -22,6 +22,12 @@
 			"binding": "LOADER",
 		},
 	],
+	// Outbound email for magic-link login, invites, and comment notifications
+	"send_email": [
+		{
+			"name": "EMAIL",
+		},
+	],
 	// Drives scheduled publishing, plugin cron, and maintenance (see src/worker.ts)
 	"triggers": {
 		"crons": ["* * * * *"],
