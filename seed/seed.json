@@ -275,6 +275,28 @@
 	"content": {
 		"pages": [
 			{
+				"id": "welcome",
+				"slug": "welcome",
+				"status": "published",
+				"data": {
+					"title": "Welcome",
+					"content": [
+						{
+							"_type": "block",
+							"style": "normal",
+							"children": [
+								{
+									"_type": "span",
+									"text": "Welcome to Warboys Parent and Toddler Group. Edit this page in the admin under Pages to change what appears on the home page.",
+									"_key": "k1"
+								}
+							],
+							"_key": "k0"
+						}
+					]
+				}
+			},
+			{
 				"id": "about",
 				"slug": "about",
 				"status": "published",
