@@ -10,6 +10,7 @@ import { createPublicPageContext } from "emdash/page";
 import LiveSearch from "emdash/ui/search";
 import { Font } from "astro:assets";
 import { resolveBlogSiteIdentity } from "../utils/site-identity";
+import { HOME_PAGE_SLUG } from "../utils/home-page";
 import "../styles/tokens.css";
 import "../styles/theme.css";
 
@@ -53,8 +54,11 @@ const menu = await getMenu("primary");
 // just shows RSS, avoiding duplication with the "Navigate" column above.
 const socialMenu = await getMenu("social");
 
-// Fetch pages for footer
-const { entries: pages } = await getEmDashCollection("pages");
+// Fetch pages for footer, minus the one already linked as "Home"
+const { entries: allPages } = await getEmDashCollection("pages", {
+	orderBy: { title: "asc" },
+});
+const pages = allPages.filter((page) => page.id !== HOME_PAGE_SLUG);
 
 // Build public page context for plugin contributions
 // SEO data is passed here and rendered securely by EmDashHead
@@ -160,7 +164,7 @@ const isLoggedIn = !!Astro.locals.user;
 							<li><a href="/">Home</a></li>
 							<li><a href="/posts">All Posts</a></li>
 							{
-								pages.slice(0, 3).map((page) => (
+								pages.map((page) => (
 									<li>
 										<a href={`/pages/${page.data.slug || page.id}`}>
 											{page.data.title}

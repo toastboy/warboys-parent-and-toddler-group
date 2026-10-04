@@ -1,5 +1,7 @@
 ---
-// The home page shows the "welcome" Page. Edit it in the admin under Pages;
-// posts are still listed at /posts.
-return Astro.rewrite("/pages/welcome");
+import { HOME_PAGE_SLUG } from "../utils/home-page";
+
+// The home page shows the HOME_PAGE_SLUG Page. Edit it in the admin under
+// Pages; posts are still listed at /posts.
+return Astro.rewrite(`/pages/${HOME_PAGE_SLUG}`);
 ---
